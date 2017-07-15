@@ -12,11 +12,12 @@ import javafx.scene.media.MediaView;
  */
 public class Player extends BorderPane {
 
-    public  Media media;
-    public  MediaPlayer player;
-    public  MediaView view;
-    public  Pane mpane;
+    Media media;
+    MediaPlayer player;
+    MediaView view;
+    Pane mpane;
 
+    MediaBar bar;
     public Player(String file){
         media = new Media(file);
         player = new MediaPlayer(media);
@@ -26,6 +27,12 @@ public class Player extends BorderPane {
         mpane.getChildren().add(view);
 
         setCenter(mpane);
+
+        bar = new MediaBar(player);
+
+        setBottom(bar);
+
+        setStyle("-fx-background-color:#bfc2c7 ");
 
         player.play();
         System.out.println("Reached end of constructor");
